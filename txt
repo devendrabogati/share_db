@@ -1,0 +1,148 @@
+# ===========================================
+# NCC Infrastructure Configuration
+# Copy this to .env and update values
+# ===========================================
+ 
+# Project Settings
+PROJECT_NAME=
+ENVIRONMENT=development
+ 
+# PostgreSQL Database
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB=ncc_admin
+POSTGRES_USER=ncc_user
+POSTGRES_PASSWORD
+ 
+# pgAdmin Configuration
+PGLADMIN_EMAIL=admin@example.com
+PGLADMIN_PASSWORD
+PGLADMIN_PORT=5050
+ 
+# Redis Cache
+REDIS_HOST=localhost
+REDIS_PORT=6379
+REDIS_COMMANDER_PORT=8081
+ 
+# MinIO Object Storage
+MINIO_HOST=localhost
+MINIO_API_PORT=9000
+MINIO_CONSOLE_PORT=9001
+MINIO_ACCESS_KEY
+MINIO_SECRET_KEY
+MINIO_BUCKET_DOCUMENTS=documents
+MINIO_BUCKET_TEMPLATES=templates
+MINIO_BUCKET_ATTACHMENTS=attachments
+MINIO_BUCKET_BACKUPS=backups
+# MinIO Public URL (for production with Nginx proxy)
+# Format: https://domain.com/minio (no trailing slash, no port)
+# Leave empty for local development (uses localhost:9000)
+MINIO_PUBLIC_URL=
+# MinIO CORS Configuration
+MINIO_CORS_ORIGINS=*
+MINIO_CORS_METHODS=GET,POST,PUT,DELETE,OPTIONS,HEAD
+MINIO_CORS_HEADERS=*
+MINIO_CORS_EXPOSE_HEADERS=Content-Encoding,x-amz-request-id,x-amz-id-2,x-amz-version-id,x-amz-server-side-encryption,x-amz-delete-marker
+# Application Configuration
+APP_PORT=8000
+HOST=0.0.0.0
+ALLOWED_ORIGINS=*
+
+# Typesense Search
+TYPESENSE_HOST=localhost
+TYPESENSE_PORT=8108
+TYPESENSE_API_KEY
+TYPESENSE_ENABLE_CORS=true
+TYPESENSE_VERSION=29.0
+TYPESENSE_PROTOCOL=http
+TYPESENSE_COLLECTION=ncc_documents
+TYPESENSE_VERSION=29.0
+TYPESENSE_ENABLE_CORS=true
+TYPESENSE_TIMEOUT=5
+ 
+# Chunking Configuration
+CHUNK_SIZE=800
+CHUNK_OVERLAP=100
+MAX_CHUNKS_PER_DOC=100
+ 
+# Search Configuration  
+DEFAULT_SEARCH_TYPE=hybrid
+SEMANTIC_WEIGHT=0.7
+TYPO_TOLERANCE=true
+ 
+
+# Embedding Configuration (Ollama - Local AI)
+EMBEDDING_PROVIDER=ollama
+EMBEDDING_MODEL=bge-m3  # Ollama embedding model with 1024 dimensions
+EMBEDDING_DIMENSIONS=1024
+EMBEDDING_BATCH_SIZE=100
+
+# Ollama Configuration (Local LLM & Embeddings)
+OLLAMA_BASE_URL=http://localhost:11434
+OLLAMA_LLM_MODEL=llama3.2:3b
+OLLAMA_EMBEDDING_MODEL=bge-m3
+OLLAMA_EMBEDDING_DIMENSIONS=1024
+OLLAMA_TEMPERATURE=0.1
+OLLAMA_MAX_TOKENS=2048
+OLLAMA_CONTEXT_WINDOW=4096
+OLLAMA_TOP_P=0.9
+OLLAMA_TOP_K=40
+
+# AWS Bedrock Configuration (Legacy - kept for reference)
+# Note: These are now optional and only used if switching back to Bedrock
+# BEDROCK_REGION=ap-south-1
+# BEDROCK_LLM_MODEL=anthropic.claude-3-5-sonnet-20240620-v1:0
+# BEDROCK_EMBEDDING_MODEL=cohere.embed-multilingual-v3
+# BEDROCK_EMBEDDING_DIMENSIONS=1024
+
+# Tesseract OCR Configuration
+TESSDATA_PREFIX=/usr/share/tesseract-ocr/5/tessdata
+
+#AWS - Unified credentials for both S3 and Bedrock services
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_SESSION_TOKEN=
+AWS_REGION=ap-south-1
+BEDROCK_REGION=ap-south-1
+# S3 Configuration (for AWS S3 storage)
+S3_BUCKET_DOCUMENTS=ncc-local-testing
+S3_BUCKET_TEMPLATES=ncc-local-testing
+S3_BUCKET_ATTACHMENTS=ncc-local-testing
+S3_BUCKET_BACKUPS=ncc-local-testing
+
+# S3 Folder Organization (within buckets)
+S3_FOLDER_DOCUMENTS=documents/
+S3_FOLDER_TEMPLATES=templates/
+S3_FOLDER_ATTACHMENTS=attachments/
+S3_FOLDER_BACKUPS=backups/
+
+# Optional: Custom presigned URL host for production
+# S3_PRESIGNED_HOST=your-custom-domain.com
+
+# OCR Configuration
+POPPLER_PATH=/usr/bin
+BULK_UPLOAD_STORAGE_PATH=/mnt/upload
+BULK_UPLOAD_BATCH_PATH=/mnt/upload/batches
+BULK_UPLOAD_TEMP_PATH=/mnt/upload/temp
+BULK_UPLOAD_FAILED_PATH=/mnt/upload/failed
+# ========================================
+# CELERY CONFIGURATION (CRITICAL FIXES)
+# ========================================
+
+# Worker Configuration (Up from default 8)
+CELERY_WORKER_CONCURRENCY=20
+CELERY_WORKER_PREFETCH_MULTIPLIER=1
+CELERY_WORKER_MAX_TASKS_PER_CHILD=1000
+
+# Task Timeouts - CRITICAL FIX (1 hour instead of 5 minutes for scanned PDFs)
+CELERY_TASK_TIME_LIMIT=3600
+CELERY_TASK_SOFT_TIME_LIMIT=3300
+
+# Broker & Backend
+CELERY_BROKER_URL=redis://localhost:6379/0
+CELERY_RESULT_BACKEND=redis://localhost:6379/0
+
+# Batch Processing
+MAX_BATCH_SIZE=100
+MAX_FILE_SIZE_MB=150
+BATCH_ITEM_PARALLEL_WORKERS=3 
