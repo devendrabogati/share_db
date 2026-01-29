@@ -1,0 +1,259 @@
+{
+    "name": "ncc_documents",
+    "fields": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "document_id",
+            "type": "string",
+            "facet": true,
+            "index": true
+        },
+        {
+            "name": "chunk_id",
+            "type": "string",
+            "index": true
+        },
+        {
+            "name": "chunk_index",
+            "type": "int32"
+        },
+        {
+            "name": "title",
+            "type": "string",
+            "index": true
+        },
+        {
+            "name": "chunk_text",
+            "type": "string",
+            "index": true
+        },
+        {
+            "name": "page_number",
+            "type": "int32",
+            "facet": true,
+            "index": true
+        },
+        {
+            "name": "chunk_type",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "content_embedding",
+            "type": "float[]",
+            "num_dim": 1024,
+            "optional": true,
+            "index": false
+        },
+        {
+            "name": "filename",
+            "type": "string",
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "original_filename",
+            "type": "string",
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "file_path",
+            "type": "string",
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "file_size",
+            "type": "int64",
+            "optional": true,
+            "facet": true
+        },
+        {
+            "name": "content_type",
+            "type": "string",
+            "optional": true,
+            "facet": true,
+            "index": true
+        },
+        {
+            "name": "bucket_name",
+            "type": "string",
+            "optional": true,
+            "facet": true
+        },
+        {
+            "name": "storage_url",
+            "type": "string",
+            "optional": true,
+            "index": false
+        },
+        {
+            "name": "document_type",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "issuing_authority",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "issue_date",
+            "type": "int64",
+            "facet": true,
+            "optional": true
+        },
+        {
+            "name": "effective_date",
+            "type": "int64",
+            "facet": true,
+            "optional": true
+        },
+        {
+            "name": "expiry_date",
+            "type": "int64",
+            "facet": true,
+            "optional": true
+        },
+        {
+            "name": "reference_number",
+            "type": "string",
+            "optional": true,
+            "index": true,
+            "facet": true
+        },
+        {
+            "name": "uploadbyid",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "uploadbyname",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "extracted_text",
+            "type": "string",
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "extraction_confidence",
+            "type": "float",
+            "optional": true,
+            "facet": true
+        },
+        {
+            "name": "classification_confidence",
+            "type": "float",
+            "optional": true,
+            "facet": true
+        },
+        {
+            "name": "document_status",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "processing_status",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "status",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "ai_tags",
+            "type": "string[]",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "operational_themes",
+            "type": "string[]",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "target_units",
+            "type": "string[]",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "version",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "is_latest_version",
+            "type": "bool",
+            "facet": true,
+            "optional": true
+        },
+        {
+            "name": "supersedes_document_id",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "normalized_filename",
+            "type": "string",
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "upload_date",
+            "type": "int64",
+            "facet": true
+        },
+        {
+            "name": "created_at",
+            "type": "int64",
+            "facet": true
+        },
+        {
+            "name": "processed_at",
+            "type": "int64",
+            "facet": true,
+            "optional": true
+        },
+        {
+            "name": "updated_at",
+            "type": "int64",
+            "optional": true
+        }
+    ],
+    "default_sorting_field": "created_at",
+    "enable_nested_fields": true
+}

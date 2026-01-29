@@ -1,0 +1,195 @@
+{
+    "name": "ncc_documents",
+    "fields": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "document_id",
+            "type": "string",
+            "facet": true,
+            "index": true
+        },
+        {
+            "name": "chunk_id",
+            "type": "string",
+            "index": true
+        },
+        {
+            "name": "chunk_index",
+            "type": "int32"
+        },
+        {
+            "name": "title",
+            "type": "string",
+            "index": true
+        },
+        {
+            "name": "chunk_text",
+            "type": "string",
+            "index": true
+        },
+        {
+            "name": "page_number",
+            "type": "int32",
+            "facet": true,
+            "index": true
+        },
+        {
+            "name": "chunk_type",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "hierarchy_path",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "section_title",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "section_level",
+            "type": "int32",
+            "facet": true,
+            "optional": true
+        },
+        {
+            "name": "section_range",
+            "type": "string",
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "chunk_part",
+            "type": "int32",
+            "optional": true
+        },
+        {
+            "name": "chunk_parts_total",
+            "type": "int32",
+            "optional": true
+        },
+        {
+            "name": "table_ids",
+            "type": "string[]",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "content_embedding",
+            "type": "float[]",
+            "num_dim": 1024,
+            "optional": true,
+            "index": true,
+            "hnsw_params": {
+                "M": 16,
+                "ef_construction": 200
+            },
+            "vec_dist": "cosine"
+        },
+        {
+            "name": "document_type",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "issuing_authority",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "issue_date",
+            "type": "int64",
+            "facet": true,
+            "optional": true
+        },
+        {
+            "name": "uploadbyid",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "uploadbyname",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "ai_tags",
+            "type": "string[]",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "operational_themes",
+            "type": "string[]",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "target_units",
+            "type": "string[]",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "classification_confidence",
+            "type": "float",
+            "optional": true
+        },
+        {
+            "name": "version",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "is_latest_version",
+            "type": "bool",
+            "facet": true,
+            "optional": true
+        },
+        {
+            "name": "supersedes_document_id",
+            "type": "string",
+            "facet": true,
+            "optional": true,
+            "index": true
+        },
+        {
+            "name": "created_at",
+            "type": "int64",
+            "facet": true
+        },
+        {
+            "name": "processed_at",
+            "type": "int64",
+            "facet": true,
+            "optional": true
+        }
+    ],
+    "default_sorting_field": "created_at",
+    "enable_nested_fields": true
+}
